@@ -1,11 +1,14 @@
 import React from 'react';
-import './App.css';
+import {Header} from "./components/Header";
+import {Main} from "./components/Main";
+import {Box} from "@chakra-ui/react";
 
 function App() {
   return (
-    <div className="App">
-      init
-    </div>
+    <Box h="100%" display="flex" flexDirection="column">
+        <Header />
+        <Main />
+    </Box>
   );
 }
 
