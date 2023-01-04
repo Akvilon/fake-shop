@@ -5,9 +5,9 @@ import {ApiService} from "../../../../services";
 export const Smartphones: React.FC = () => {
 
     useEffect(() => {
-        ApiService.getSmartphones().then(smartphones => console.log(smartphones))
+        ApiService.getProductsByCategory().then(prods => console.log(prods))
     }, [])
     return (
-        <></>
+        <>One</>
     )
 }

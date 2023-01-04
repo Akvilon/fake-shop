@@ -1,5 +1,4 @@
 import React from 'react'
-import './Logo.css'
 import {Box, Text, Wrap} from "@chakra-ui/react";
 
 export const Logo: React.FC = () => {
@@ -62,7 +61,7 @@ export const Logo: React.FC = () => {
 
             <Text
                 position="absolute"
-                top='20%'
+                top='22%'
                 left="0"
                 right="0"
                 color="white"
