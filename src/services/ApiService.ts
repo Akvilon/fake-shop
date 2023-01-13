@@ -2,11 +2,12 @@ import axios from "axios";
 
 export class ApiService {
 
-    public static getProductsByCategory = async (category:string) => {
+    public static getProductsByCategory = async (categoryId:string) => {
+
         try {
             const response = await axios.get('https://sephora.p.rapidapi.com/products/list', {
                 params: {
-                    categoryId: category,
+                    categoryId: categoryId,
                     pageSize: '30',
                     currentPage: '1'
                 },

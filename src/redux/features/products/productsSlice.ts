@@ -1,55 +1,36 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import {ApiService} from "../../services";
+import {ApiService} from "../../../services";
+import {Category, ProductsState} from "./types";
+import {PRODUCTS_CATEGORY_NAME} from "../../../constants";
 
-type Products = {
-    brandName: string,
-    currentSku: {
-        listPrice: string
-    },
-    displayName: string,
-    heroImage: string,
-    image250: string,
-    rating: string
-}
-type CategoryData = {
-    displayName: string,
-    products: Array<Products>
-}
-
-type ProductsList = {
-    productsList: Array<CategoryData>
-    loading: boolean,
-    error: string | undefined
-}
-
-const initialState: ProductsList = {
-    productsList: [
+const initialState: ProductsState = {
+    categoriesList: [
         {
-            displayName: 'makeup',
+            displayName: PRODUCTS_CATEGORY_NAME.MAKEUP,
             products: []
         },
         {
-            displayName: 'skincare',
+            displayName: PRODUCTS_CATEGORY_NAME.SKINCARE,
             products: []
         },
         {
-            displayName: 'tools',
+            displayName: PRODUCTS_CATEGORY_NAME.TOOLS_AND_BRUSHES,
             products: []
         },
         {
-            displayName: 'gifts',
+            displayName: PRODUCTS_CATEGORY_NAME.GIFTS,
             products: []
         },
         {
-            displayName: 'men',
+            displayName: PRODUCTS_CATEGORY_NAME.MEN,
             products: []
         }
     ],
     loading: false,
     error: undefined
-}
+};
 
-export const fetchProductsByCategory = createAsyncThunk<CategoryData, string>(
+export const fetchProductsByCategory = createAsyncThunk<Category, string>(
 'products/fetchProducts',
     async (categoryId) => {
         const data = await ApiService.getProductsByCategory(categoryId)
@@ -67,11 +48,11 @@ const productsSlice = createSlice({
                 state.loading = true
                 state.error = undefined
             })
-            .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
-                console.log(action.payload)
-                state.productsList.map(category => {
-                    if(category.displayName === action.payload.displayName.toLowerCase()) {
-                        category.products = action.payload.products
+            .addCase(fetchProductsByCategory.fulfilled, (state, {payload}) => {
+                console.log('payload >>>', payload)
+                state.categoriesList.map(category => {
+                    if(category.displayName === payload.displayName) {
+                        category.products = payload.products
                     }
                 })
                 state.loading = false
