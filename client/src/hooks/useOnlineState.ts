@@ -13,17 +13,17 @@ export const useOnlineState = () => {
     const [isShow, setIsShow] = useState<boolean>(false)
     const previousStatus = usePrevious(window.navigator.onLine)
 
-    const handleOnline = () => {
-        setOnline(true)
-        if(online !== previousStatus) {
+    useEffect(() => {
+        const handleOnline = () => {
+            setOnline(true)
+            if(online !== previousStatus) {
+                setIsShow(true)
+            }
+        }
+        const  handleOffline = () => {
+            setOnline(false)
             setIsShow(true)
         }
-    }
-    const  handleOffline = () => {
-        setOnline(false)
-        setIsShow(true)
-    }
-    useEffect(() => {
         window.addEventListener("online", handleOnline)
         window.addEventListener("offline", handleOffline)
 
@@ -31,7 +31,7 @@ export const useOnlineState = () => {
             window.removeEventListener("online", handleOnline)
             window.removeEventListener("offline", handleOffline)
         }
-    }, [])
+    }, [window.navigator.onLine])
 
     return {online, isShow}
 }

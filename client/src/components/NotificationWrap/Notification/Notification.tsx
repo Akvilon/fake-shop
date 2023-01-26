@@ -7,24 +7,27 @@ export type NotificationProps = {
 }
 
 export const Notification: React.FC<NotificationProps> = ({ online , isShow}) => {
-    const [show, setShow] = useState<boolean>(isShow)
+
+    const [showNotification, setShowNotification] = useState<boolean>(isShow)
 
     useEffect(() => {
-        setShow(isShow)
+        if(!isShow) return
+
+        setShowNotification(true)
 
         const timer = setTimeout(() => {
-            setShow(false)
+            setShowNotification(false)
         }, 3000)
 
         return () => {
             clearTimeout(timer)
         }
-    }, [isShow]);
+    }, [online, isShow]);
 
     const renderMessage = () => {
         const message = online ? 'Application is ONLINE' : 'Application is OFFLINE'
         return (
-            <Card position="fixed" bottom="0">
+            <Card position="fixed" bottom="0" left="45%">
                 <CardBody>
                     <Text>{message}</Text>
                 </CardBody>
@@ -35,7 +38,7 @@ export const Notification: React.FC<NotificationProps> = ({ online , isShow}) =>
     return (
         <>
             {
-                show ? renderMessage() : null
+                showNotification ? renderMessage() : null
             }
         </>
     )
