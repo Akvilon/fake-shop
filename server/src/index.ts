@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
-import shopStoreRoute from './routes/Categories.js'
+import ProductsRoute from './routes/Products.js'
 import config from "./config/config.js";
 
 const app = express()
@@ -11,7 +11,7 @@ app.use(cors())
 app.use(express.json())
 
 // Routes
-app.use('/api', shopStoreRoute)
+app.use('/api', ProductsRoute)
 
 mongoose.connect(config.mongo.url)
     .then(() => console.log('connected to database'))

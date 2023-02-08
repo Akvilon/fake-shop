@@ -10,10 +10,6 @@ import {ProfilePage} from "../pages/ProfilePage";
 
 function App() {
 
-    useEffect(() => {
-        ApiService.testReq().then(data => console.log(data))
-    }, [])
-
   return (
       <>
           <Routes>

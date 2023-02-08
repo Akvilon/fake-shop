@@ -1,11 +1,11 @@
 import React from 'react'
 import {Tab, TabList, TabPanel, TabPanels, Tabs} from "@chakra-ui/react";
-import {ProductsList} from "./ProductsList";
 import {useAppSelector} from "../../../redux/hooks";
 import {tabs} from "../../../constants";
+import { ProductsList } from './ProductsList'
 
 export const Content: React.FC = () => {
-    const categoriesList = useAppSelector(state => state.products.categoriesList)
+    const products = useAppSelector(state => state.products.products)
     return (
         <Tabs variant='unstyled' width="100%">
             <TabList boxShadow="0 1px 3px 0 rgba(0, 0, 0, 0.1),0 1px 2px 0 rgba(0, 0, 0, 0.06)">
@@ -27,6 +27,7 @@ export const Content: React.FC = () => {
                         return (
                             <TabPanel key={tab.contentId}>
                                 <p>This is {tab.title} content</p>
+                                <ProductsList products={products}/>
                             </TabPanel>
                         )
                     })

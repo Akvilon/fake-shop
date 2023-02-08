@@ -1,21 +1,20 @@
+export type Category = {
+    id: string
+    name: string
+    image: string
+}
 
 export type Product = {
-    brandName: string,
-    currentSku: {
-        listPrice: string
-    },
-    displayName: string,
-    heroImage: string,
-    image250: string,
-    rating: string
-}
-export type Category = {
-    displayName: string,
-    products: Array<Product>
+    _id: number,
+    title: string
+    price: number
+    description: string
+    images: Array<string>
+    category: Category
 }
 
 export type ProductsState = {
-    categoriesList: Array<Category>
+    products: Array<Product>
     loading: boolean,
     error: string | undefined
 }

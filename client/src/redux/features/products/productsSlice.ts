@@ -1,39 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import {ApiService} from "../../../services";
-import {Category, ProductsState} from "./types";
-import {PRODUCTS_CATEGORY_NAME} from "../../../constants";
+import {Product, ProductsState} from "./types";
 
 const initialState: ProductsState = {
-    categoriesList: [
-        {
-            displayName: PRODUCTS_CATEGORY_NAME.MAKEUP,
-            products: []
-        },
-        {
-            displayName: PRODUCTS_CATEGORY_NAME.SKINCARE,
-            products: []
-        },
-        {
-            displayName: PRODUCTS_CATEGORY_NAME.TOOLS_AND_BRUSHES,
-            products: []
-        },
-        {
-            displayName: PRODUCTS_CATEGORY_NAME.GIFTS,
-            products: []
-        },
-        {
-            displayName: PRODUCTS_CATEGORY_NAME.MEN,
-            products: []
-        }
-    ],
+    products: [],
     loading: false,
     error: undefined
 };
 
-export const fetchProductsByCategory = createAsyncThunk<Category, string>(
+export const fetchProducts = createAsyncThunk(
 'products/fetchProducts',
-    async (categoryId) => {
-        const data = await ApiService.getProductsByCategory(categoryId)
+    async () => {
+        const data = await ApiService.getProducts()
         return data
     }
 )
@@ -44,20 +22,18 @@ const productsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProductsByCategory.pending, (state) => {
+            .addCase(fetchProducts.pending, (state) => {
                 state.loading = true
                 state.error = undefined
             })
-            .addCase(fetchProductsByCategory.fulfilled, (state, {payload}) => {
+            .addCase(fetchProducts.fulfilled, (state, {payload}) => {
                 console.log(payload)
-                state.categoriesList.map(category => {
-                    if(category.displayName === payload.displayName) {
-                        category.products = payload.products
-                    }
-                })
+                // state.products.map(product => {
+                //
+                // })
                 state.loading = false
             })
-            .addCase(fetchProductsByCategory.rejected, (state, action) => {
+            .addCase(fetchProducts.rejected, (state, action) => {
                 state.loading = false
                 state.error = action.error.message
             })
