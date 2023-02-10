@@ -1,38 +1,38 @@
 
 export enum PRODUCTS_CATEGORY_ID {
-    MAKEUP = 'cat140006',
-    SKINCARE = 'cat150006',
-    TOOLS_AND_BRUSHES = 'cat130042',
-    GIFTS = 'cat60270',
-    MEN = 'cat130044'
+    CLOTHES = 1,
+    ELECTRONICS = 2,
+    FURNITURE = 3,
+    SHOES = 4,
+    OTHERS = 5
 }
 export enum PRODUCTS_CATEGORY_NAME {
-    MAKEUP = 'Makeup',
-    SKINCARE = 'Skincare',
-    TOOLS_AND_BRUSHES = 'Tools & Brushes',
-    GIFTS = 'Gifts',
-    MEN = 'Men'
+    CLOTHES = 'Clothes',
+    ELECTRONICS = 'Electronics',
+    FURNITURE = 'Furniture',
+    SHOES = 'Shoes',
+    OTHERS = 'Others'
 }
 
 export const tabs = [
     {
-        title: PRODUCTS_CATEGORY_NAME.MAKEUP,
-        contentId: PRODUCTS_CATEGORY_ID.MAKEUP
+        title: PRODUCTS_CATEGORY_NAME.CLOTHES,
+        contentId: PRODUCTS_CATEGORY_ID.CLOTHES
     },
     {
-        title: PRODUCTS_CATEGORY_NAME.SKINCARE,
-        contentId: PRODUCTS_CATEGORY_ID.SKINCARE
+        title: PRODUCTS_CATEGORY_NAME.ELECTRONICS,
+        contentId: PRODUCTS_CATEGORY_ID.ELECTRONICS
     },
     {
-        title: PRODUCTS_CATEGORY_NAME.TOOLS_AND_BRUSHES,
-        contentId: PRODUCTS_CATEGORY_ID.TOOLS_AND_BRUSHES
+        title: PRODUCTS_CATEGORY_NAME.FURNITURE,
+        contentId: PRODUCTS_CATEGORY_ID.FURNITURE
     },
     {
-        title: PRODUCTS_CATEGORY_NAME.GIFTS,
-        contentId: PRODUCTS_CATEGORY_ID.GIFTS
+        title: PRODUCTS_CATEGORY_NAME.SHOES,
+        contentId: PRODUCTS_CATEGORY_ID.SHOES
     },
     {
-        title: PRODUCTS_CATEGORY_NAME.MEN,
-        contentId: PRODUCTS_CATEGORY_ID.MEN
+        title: PRODUCTS_CATEGORY_NAME.OTHERS,
+        contentId: PRODUCTS_CATEGORY_ID.OTHERS
     }
 ]

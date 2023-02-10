@@ -3,7 +3,7 @@ import {ApiService} from "../../../services";
 import {Product, ProductsState} from "./types";
 
 const initialState: ProductsState = {
-    products: [],
+    productsList: [],
     loading: false,
     error: undefined
 };
@@ -27,10 +27,7 @@ const productsSlice = createSlice({
                 state.error = undefined
             })
             .addCase(fetchProducts.fulfilled, (state, {payload}) => {
-                console.log(payload)
-                // state.products.map(product => {
-                //
-                // })
+                state.productsList = payload
                 state.loading = false
             })
             .addCase(fetchProducts.rejected, (state, action) => {

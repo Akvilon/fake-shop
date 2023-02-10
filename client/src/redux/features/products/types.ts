@@ -1,5 +1,5 @@
 export type Category = {
-    id: string
+    id: number
     name: string
     image: string
 }
@@ -14,7 +14,7 @@ export type Product = {
 }
 
 export type ProductsState = {
-    products: Array<Product>
+    productsList: Array<Product>
     loading: boolean,
     error: string | undefined
 }

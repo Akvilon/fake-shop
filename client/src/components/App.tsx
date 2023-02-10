@@ -1,20 +1,17 @@
-import React, {useEffect} from 'react';
-import {Header} from "./Header";
-import {Main} from "./Main";
-import {Box} from "@chakra-ui/react";
+import React from 'react';
 import {NotificationWrap} from "./NotificationWrap";
-import {ApiService} from "../services";
 import {Route, Routes} from "react-router-dom";
-import {CartPage, FavoritePage, HomePage} from "../pages";
-import {ProfilePage} from "../pages/ProfilePage";
+import { AuthPage, CartPage, FavoritePage, HomePage, ProfilePage } from '../pages'
+
 
 function App() {
 
   return (
       <>
-          <Routes>
+          <Routes>x
               <Route path={'*'} element={<HomePage />}/>
               <Route path={'/profile'} element={<ProfilePage />}/>
+              <Route path={'/auth'} element={<AuthPage />}/>
               <Route path={'/fav'} element={<FavoritePage />}/>
               <Route path={'/cart'} element={<CartPage />}/>
           </Routes>

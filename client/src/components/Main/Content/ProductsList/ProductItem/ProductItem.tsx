@@ -1,23 +1,23 @@
 import React from 'react'
 import {Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Stack, Image} from "@chakra-ui/react";
+import { Product } from '../../../../../redux/features/products/types'
 
 type ProductItemType = {
-    displayName: string
-    image250: string
+   product: Product
 }
 
-export const ProductItem: React.FC<ProductItemType> = ({displayName, image250}) => {
+export const ProductItem: React.FC<ProductItemType> = ({product}) => {
     return (
         <>
             <Card width='380px'>
                 <CardBody>
                     <Image
-                        src={image250}
+                        src={product.images[2]}
                         alt=''
                         borderRadius='lg'
                     />
                     <Stack mt='6' spacing='3'>
-                        <Heading size='md'>{displayName}</Heading>
+                        <Heading size='md'>{product.title}</Heading>
                     </Stack>
                 </CardBody>
                 <Divider />
