@@ -5,7 +5,7 @@ import { Auth } from '../components/Auth'
 
 export const AuthPage = () => {
     return (
-        <Page title="FakeShop | AUTH" withHeader={true}>
+        <Page title="FakeShop | AUTH" withHeader={false}>
             <Auth />
         </Page>
     )

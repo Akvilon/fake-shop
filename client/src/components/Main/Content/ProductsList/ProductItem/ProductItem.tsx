@@ -23,10 +23,10 @@ export const ProductItem: React.FC<ProductItemType> = ({product}) => {
                 <Divider />
                 <CardFooter>
                     <ButtonGroup spacing='2'>
-                        <Button variant='solid' colorScheme='blue'>
+                        <Button variant='solid' background="#319795" color="#fff">
                             Buy now
                         </Button>
-                        <Button variant='ghost' colorScheme='blue'>
+                        <Button variant='ghost' color="#319795">
                             Add to cart
                         </Button>
                     </ButtonGroup>
